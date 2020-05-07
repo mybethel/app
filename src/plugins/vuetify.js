@@ -50,6 +50,7 @@ function usePreferredScheme (e) {
   document.body.classList.add('theme--' + (e.matches ? 'dark' : 'light'))
   document.body.classList.remove('theme--' + (!e.matches ? 'dark' : 'light'))
   vuetify.framework.theme.dark = e.matches
+  document.head.querySelector('link[rel="mask-icon"]').setAttribute('color', e.matches ? '#FFF' : '#137490')
 }
 
 const mq = window.matchMedia('(prefers-color-scheme: dark)')
