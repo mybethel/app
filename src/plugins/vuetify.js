@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 
-import { mdiApps } from '@mdi/js'
+import { mdiApps, mdiEye, mdiEyeOff } from '@mdi/js'
+import { makePalette } from 'material-color-tool'
+
+const brand = makePalette('#137490')
 
 Vue.use(Vuetify)
 
@@ -9,7 +12,36 @@ const vuetify = new Vuetify({
   icons: {
     iconfont: 'mdiSvg',
     values: {
-      apps: mdiApps
+      apps: mdiApps,
+      show: mdiEye,
+      hide: mdiEyeOff
+    }
+  },
+  theme: {
+    themes: {
+      dark: {
+        primary: {
+          lighten3: brand[0],
+          lighten2: brand[1],
+          lighten1: brand[2],
+          base: brand[3],
+          darken1: brand[4],
+          darken2: brand[5],
+          darken3: brand[6],
+          darken4: brand[7]
+        }
+      },
+      light: {
+        primary: {
+          lighten5: brand[3],
+          lighten4: brand[4],
+          lighten3: brand[5],
+          lighten2: brand[6],
+          lighten1: brand[7],
+          base: brand[8],
+          darken1: brand[9]
+        }
+      }
     }
   }
 })

@@ -14,10 +14,10 @@ export default {
 
 <template>
   <v-app>
-    <app-bar />
+    <app-bar v-if="$auth.isLoggedIn" />
 
     <v-content>
-
+      <router-view />
     </v-content>
   </v-app>
 </template>
