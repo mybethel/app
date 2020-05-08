@@ -7,6 +7,9 @@ module.exports = {
     'plugin:vue/essential',
     '@vue/standard'
   ],
+  plugins: [
+    'graphql'
+  ],
   parserOptions: {
     parser: 'babel-eslint'
   },

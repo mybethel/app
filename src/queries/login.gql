@@ -1,0 +1,10 @@
+mutation Login($email: String, $password: String, $token: String) {
+  issueToken(email: $email, password: $password, token: $token) {
+    token
+    user {
+      id
+      avatar
+      name
+    }
+  }
+}

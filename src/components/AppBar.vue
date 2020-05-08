@@ -32,7 +32,7 @@ export default {
 
     <v-avatar size="32">
       <img
-        src="https://gravatar.com/avatar/fa93eef69a0457fbfcd1085e63050df0.png?d=mm"
+        :src="$auth.user.avatar"
       >
     </v-avatar>
   </v-app-bar>

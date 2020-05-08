@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './routes'
 import store from './store'
 
+import apolloProvider from './plugins/apollo'
 import auth from './plugins/auth'
 import vuetify from './plugins/vuetify'
 
@@ -17,5 +18,6 @@ new Vue({
   router,
   store,
   vuetify,
+  apolloProvider,
   render: h => h(App)
 }).$mount('#app')
