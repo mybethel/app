@@ -40,10 +40,12 @@ export default {
 
 <style lang="scss">
 header.v-app-bar.v-toolbar {
-  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, .05);
-
   a.v-toolbar__brand {
     line-height: 0;
+  }
+
+  &.theme--light {
+    box-shadow: 0 1px 3px 2px rgba(0, 0, 0, .05) !important;
   }
 }
 </style>
