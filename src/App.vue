@@ -6,19 +6,17 @@ export default {
   components: {
     AppBar
   },
-  data: () => ({
-    //
-  })
+  inject: ['authData']
 }
 </script>
 
 <template>
   <v-app>
-    <app-bar v-if="$auth.isLoggedIn" />
+    <app-bar v-if="authData.isLoggedIn" />
 
-    <v-content>
+    <v-main>
       <router-view />
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 

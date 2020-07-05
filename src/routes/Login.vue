@@ -8,6 +8,7 @@ export default {
   },
   inject: ['theme'],
   data: () => ({
+    loading: false,
     form: {
       email: '',
       password: ''
@@ -26,6 +27,7 @@ export default {
   methods: {
     async login () {
       this.error = false
+      this.loading = true
       if (!await this.$auth.login(this.form)) {
         this.error = true
         return
@@ -84,6 +86,7 @@ export default {
           <v-btn
             :dark="!theme.isDark"
             :light="theme.isDark"
+            :loading="loading"
             type="submit"
             color="primary"
             depressed

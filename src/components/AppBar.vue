@@ -2,7 +2,7 @@
 import Logo from './Logo'
 
 export default {
-  inject: ['theme'],
+  inject: ['authData', 'theme'],
   components: {
     Logo
   }
@@ -32,7 +32,7 @@ export default {
 
     <v-avatar size="32">
       <img
-        :src="$auth.user.avatar"
+        :src="authData.user.avatar"
       >
     </v-avatar>
   </v-app-bar>

@@ -4,7 +4,7 @@ import router from './routes'
 import store from './store'
 
 import apolloProvider from './plugins/apollo'
-import auth from './plugins/auth'
+import auth, { authData } from './plugins/auth'
 import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
@@ -16,7 +16,9 @@ router.beforeEach(async (to, from, next) => {
 
 new Vue({
   router,
-  store,
+  provide: {
+    authData
+  },
   vuetify,
   apolloProvider,
   render: h => h(App)
