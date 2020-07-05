@@ -10,7 +10,7 @@ export default {
     greeting () {
       const time = new Date().getHours()
       if (time < 12) return 'morning'
-      if (time < 6) return 'afternoon'
+      if (time < 18) return 'afternoon'
       return 'evening'
     }
   }
