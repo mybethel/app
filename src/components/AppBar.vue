@@ -2,6 +2,7 @@
 import Logo from './Logo'
 
 export default {
+  name: 'AppBar',
   inject: ['authData', 'theme'],
   components: {
     Logo

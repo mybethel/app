@@ -5,10 +5,13 @@ export default {
   components: {
     Springboard
   },
+  data: () => ({
+    date: new Date()
+  }),
   inject: ['authData'],
   computed: {
     greeting () {
-      const time = new Date().getHours()
+      const time = this.date.getHours()
       if (time < 12) return 'morning'
       if (time < 18) return 'afternoon'
       return 'evening'
