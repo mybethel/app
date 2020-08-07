@@ -4,6 +4,7 @@ import router from './routes'
 
 import { registry } from './apps'
 
+import apiClient from './plugins/api'
 import apolloProvider from './plugins/apollo'
 import auth, { authData } from './plugins/auth'
 import vuetify from './plugins/vuetify'
@@ -18,6 +19,7 @@ router.beforeEach(async (to, from, next) => {
 new Vue({
   router,
   provide: {
+    apiClient,
     authData,
     plugins: registry.plugins
   },

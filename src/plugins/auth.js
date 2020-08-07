@@ -60,8 +60,9 @@ const auth = new Vue({
         return false
       }
     },
-    setToken ({ user, token }) {
+    setToken ({ user, ministry, token }) {
       authData.user = user
+      authData.ministry = ministry
       this.token = token
     }
   }
