@@ -1,0 +1,18 @@
+query GetPodcast($id: ID!) {
+  collection(id: $id) {
+    id
+    title
+    links {
+      totalCount
+      edges {
+        node {
+          ... on Asset {
+            title
+            description
+            date
+          }
+        }
+      }
+    }
+  }
+}

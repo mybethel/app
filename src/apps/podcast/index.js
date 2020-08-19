@@ -8,6 +8,17 @@ export default {
     glyph
   },
   routes: [
-    { name: 'io.bethel.podcast', path: '/podcast', component: () => import('./routes/Home') }
+    {
+      component: () => import('./routes/Home'),
+      name: 'io.bethel.podcast',
+      path: '/podcast',
+      children: [
+        {
+          path: ':id',
+          name: 'io.bethel.podcast.detail',
+          component: () => import('./routes/Detail')
+        }
+      ]
+    }
   ]
 }

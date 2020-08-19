@@ -23,8 +23,12 @@ export default {
         cols="4"
       >
         <v-list two-line>
+          <v-subheader>{{ podcasts.length }} podcasts</v-subheader>
           <template v-for="(podcast, index) in podcasts">
-            <v-list-item :key="podcast.id">
+            <v-list-item
+              :to="{ name: 'io.bethel.podcast.detail', params: { id: podcast.id } }"
+              :key="podcast.id"
+            >
               <v-list-item-avatar>
                 <v-img :src="'https://picsum.photos/500/300?image=' + index"></v-img>
               </v-list-item-avatar>
@@ -39,11 +43,14 @@ export default {
             </v-list-item>
             <v-divider
               v-if="index < podcasts.length - 1"
-              :key="podcast.id"
+              :key="podcast.id + '-divider'"
               inset
             />
           </template>
         </v-list>
+      </v-col>
+      <v-col cols="8">
+        <router-view />
       </v-col>
     </v-row>
   </v-container>
