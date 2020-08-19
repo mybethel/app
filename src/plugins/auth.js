@@ -20,7 +20,7 @@ export const authData = Vue.observable({
   }
 })
 
-const TOKEN_KEY = 'io.bethel.token'
+export const TOKEN_KEY = 'io.bethel.token'
 
 /**
  * @private
@@ -43,11 +43,16 @@ const auth = new Vue({
       const cachedToken = localStorage.getItem(TOKEN_KEY)
       if (!this.isLoggedIn && !cachedToken) return false
 
-      const { data: { issueToken } } =
-        await apolloClient.mutate({ mutation, variables: { token: cachedToken } })
-      this.setToken(issueToken)
+      try {
+        const { data: { issueToken } } =
+          await apolloClient.mutate({ mutation, variables: { token: cachedToken } })
 
-      return true
+        this.setToken(issueToken)
+        return true
+      } catch (err) {
+        this.logout()
+        return false
+      }
     },
     async login ({ email, password }) {
       try {
@@ -59,6 +64,11 @@ const auth = new Vue({
       } catch (err) {
         return false
       }
+    },
+    logout () {
+      authData.user = {}
+      authData.ministry = {}
+      this.token = ''
     },
     setToken ({ user, ministry, token }) {
       authData.user = user
