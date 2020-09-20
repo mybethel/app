@@ -40,8 +40,10 @@ const auth = new Vue({
       localVue.prototype.$auth = localVue.$auth = this
     },
     async init () {
+      if (authData.isLoggedIn) return true
+
       const cachedToken = localStorage.getItem(TOKEN_KEY)
-      if (!this.isLoggedIn && !cachedToken) return false
+      if (!cachedToken) return false
 
       try {
         const { data: { issueToken } } =
