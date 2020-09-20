@@ -1,0 +1,21 @@
+query AllPodcasts($ministry: ID!) {
+  ministry(id: $ministry) {
+    collections(type: "io.bethel.podcast") {
+      edges {
+        node {
+          id
+          title
+          links {
+            totalCount
+          }
+          settings {
+            items {
+              key
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+}

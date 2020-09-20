@@ -14,5 +14,11 @@ query GetPodcast($id: ID!) {
         }
       }
     }
+    settings {
+      items {
+        key
+        value
+      }
+    }
   }
 }

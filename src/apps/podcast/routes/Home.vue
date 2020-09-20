@@ -1,4 +1,6 @@
 <script>
+import query from '../queries/allPodcasts.gql'
+
 export default {
   name: 'PodcastHome',
   inject: ['apiClient'],
@@ -6,8 +8,7 @@ export default {
     podcasts: []
   }),
   async mounted () {
-    const { collections } = await this.apiClient.getCollections('io.bethel.podcast')
-    this.podcasts = collections
+    this.podcasts = await this.apiClient.getCollections({ query })
   }
 }
 </script>
@@ -29,8 +30,8 @@ export default {
               :to="{ name: 'io.bethel.podcast.detail', params: { id: podcast.id } }"
               :key="podcast.id"
             >
-              <v-list-item-avatar>
-                <v-img :src="'https://picsum.photos/500/300?image=' + index"></v-img>
+              <v-list-item-avatar rounded="sm">
+                <v-img :src="podcast.settings.get('image')"></v-img>
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title>

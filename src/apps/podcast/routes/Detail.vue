@@ -6,7 +6,7 @@ export default {
   inject: ['apiClient'],
   data: () => ({
     edit: false,
-    podcast: {}
+    podcast: null
   }),
   created () {
     this.fetchData()
@@ -24,19 +24,17 @@ export default {
   },
   methods: {
     async fetchData () {
-      const { data } = await this.apiClient.query({
+      this.podcast = await this.apiClient.getCollection({
         query,
         variables: { id: this.$route.params.id }
       })
-
-      this.podcast = data.collection
     }
   }
 }
 </script>
 
 <template>
-  <section class="podcast__detail">
+  <section class="podcast__detail" v-if="podcast">
     <v-card
       class="mb-4"
       color="transparent"
@@ -52,9 +50,9 @@ export default {
         <v-avatar
           class="ma-3"
           size="125"
-          tile
+          rounded="sm"
         >
-          <v-img src="https://picsum.photos/500/300?image=222" />
+          <v-img :src="podcast.settings.get('image')" />
         </v-avatar>
       </div>
     </v-card>

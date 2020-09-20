@@ -1,7 +1,7 @@
 import { apolloClient } from '../apollo'
 import { authData } from '../auth'
 
-import getCollections from './queries/getCollections.gql'
+import { collection } from './types'
 
 /**
  * For advanced usecases, `query` and `mutate` are available which are expected
@@ -13,18 +13,33 @@ export default {
   mutate: apolloClient.mutate,
 
   /**
-   * Get all collections that are associated with a ministry.
-   * @param {String} type The collection type, or empty for all collections.
+   * Get a single collection, using a custom query.
+   * @param {Object} query A query for the GraphQL client.
    */
-  async getCollections (type) {
-    const { errors, data } =
-      await this.query({
-        query: getCollections,
-        variables: { ministry: authData.ministry.id, type }
-      })
+  async getCollection (query) {
+    const { errors, data } = await this.query(query)
 
-    const collections = (data?.ministry?.collections?.edges || []).map(({ node }) => node)
+    if (errors) {
+      // @TODO: Error handling
+    }
 
-    return { errors, collections }
+    return collection(data.collection)
+  },
+
+  /**
+   * Get all collections that are associated with a ministry.
+   * A `$ministry` variables is provided for your query.
+   * @param {Object} query A query for the GraphQL client.
+   */
+  async getCollections ({ query, variables = {} }) {
+    variables.ministry = authData.ministry.id
+
+    const { errors, data } = await this.query({ query, variables })
+
+    if (errors) {
+      // @TODO: Error handling
+    }
+
+    return (data?.ministry?.collections?.edges || []).map(({ node }) => collection(node))
   }
 }
