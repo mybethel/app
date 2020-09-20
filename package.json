@@ -10,7 +10,7 @@
     "test": "npm run test:unit"
   },
   "dependencies": {
-    "@mdi/js": "^5.1.45",
+    "@mdi/js": "^5.6.55",
     "core-js": "^3.6.4",
     "material-color-tool": "^1.1.0",
     "vue": "^2.6.12",
