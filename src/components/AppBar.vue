@@ -3,7 +3,7 @@ import Logo from './Logo'
 
 export default {
   name: 'AppBar',
-  inject: ['authData', 'theme'],
+  inject: ['apiClient', 'authData', 'theme'],
   components: {
     Logo
   }
@@ -16,6 +16,13 @@ export default {
     app
     dense
   >
+    <v-progress-linear
+      :active="apiClient.status.loading"
+      indeterminate
+      absolute
+      bottom
+    />
+
     <v-btn icon>
       <v-icon>$apps</v-icon>
     </v-btn>
