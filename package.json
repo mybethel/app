@@ -14,7 +14,7 @@
     "core-js": "^3.6.4",
     "material-color-tool": "^1.1.0",
     "vue": "^2.6.12",
-    "vue-apollo": "^3.0.4",
+    "vue-apollo": "^3.0.5",
     "vue-router": "^3.4.9",
     "vuetify": "^2.3.16"
   },
