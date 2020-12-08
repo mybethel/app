@@ -28,8 +28,10 @@ export default {
     async login () {
       this.error = false
       this.loading = true
+
       if (!await this.$auth.login(this.form)) {
         this.error = true
+        this.loading = false
         return
       }
 
@@ -49,7 +51,7 @@ export default {
       class="v-card__login pa-7"
       width="450"
     >
-      <form @submit.prevent="login">
+      <v-form @submit.prevent="login">
         <v-row justify="center">
           <logo size="64" />
         </v-row>
@@ -94,7 +96,7 @@ export default {
             Next
           </v-btn>
         </v-card-actions>
-      </form>
+      </v-form>
     </v-card>
   </v-row>
 </template>

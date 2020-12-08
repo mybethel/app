@@ -37,6 +37,7 @@ describe('Login', () => {
     mockAuth.login.mockResolvedValueOnce(false)
     await wrapper.vm.login()
     expect(wrapper.vm.error).toBe(true)
+    expect(wrapper.vm.loading).toBe(false)
     expect(mockRouter.push).not.toHaveBeenCalled()
   })
 
