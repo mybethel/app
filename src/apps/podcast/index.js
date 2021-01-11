@@ -16,7 +16,12 @@ export default {
         {
           path: ':id',
           name: 'io.bethel.podcast.detail',
-          component: () => import('./routes/Detail')
+          component: () => import('./routes/Episodes')
+        },
+        {
+          path: 'settings',
+          name: 'io.bethel.podcast.settings',
+          component: () => import('./routes/Settings')
         }
       ]
     }

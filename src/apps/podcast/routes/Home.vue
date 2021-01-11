@@ -21,27 +21,55 @@ export default {
     <v-row no-gutters>
       <v-col
         class="podcast--home__sidebar"
-        cols="4"
+        cols="3"
       >
-        <v-list two-line>
+        <v-list>
           <v-subheader>{{ podcasts.length }} podcasts</v-subheader>
           <template v-for="(podcast, index) in podcasts">
-            <v-list-item
-              :to="{ name: 'io.bethel.podcast.detail', params: { id: podcast.id } }"
+            <v-list-group
+              @click="$router.push({ name: 'io.bethel.podcast.detail', params: { id: podcast.id } })"
               :key="podcast.id"
+              two-line
+              inactive
             >
-              <v-list-item-avatar rounded="sm">
-                <v-img :src="podcast.settings.get('image')"></v-img>
-              </v-list-item-avatar>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ podcast.title }}
-                </v-list-item-title>
-                <v-list-item-subtitle>
-                  {{ podcast.links.totalCount }} episode{{ podcast.links.totalCount !== 1 ? 's' : '' }}
-                </v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
+              <template v-slot:activator>
+                <v-list-item-avatar rounded="sm">
+                  <v-img :src="podcast.settings.get('image')"></v-img>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{ podcast.title }}
+                  </v-list-item-title>
+                  <v-list-item-subtitle>
+                    {{ podcast.links.totalCount }} episode{{ podcast.links.totalCount !== 1 ? 's' : '' }}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item
+                :key="podcast.id + '.settings'"
+                :to="{ name: 'io.bethel.podcast.detail', params: { id: podcast.id } }"
+                dense
+                exact
+                link
+              >
+                <v-list-item-title>Episodes</v-list-item-title>
+                <v-list-item-icon>
+                  <v-icon>$folder</v-icon>
+                </v-list-item-icon>
+              </v-list-item>
+              <v-list-item
+                :key="podcast.id + '.settings'"
+                :to="{ name: 'io.bethel.podcast.settings', params: { id: podcast.id } }"
+                dense
+                link
+              >
+                <v-list-item-title>Settings</v-list-item-title>
+                <v-list-item-icon>
+                  <v-icon>$settings</v-icon>
+                </v-list-item-icon>
+              </v-list-item>
+            </v-list-group>
             <v-divider
               v-if="index < podcasts.length - 1"
               :key="podcast.id + '-divider'"
@@ -50,7 +78,7 @@ export default {
           </template>
         </v-list>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="9">
         <router-view />
       </v-col>
     </v-row>
@@ -64,6 +92,10 @@ export default {
   .podcast--home__sidebar,
   .podcast--home__sidebar > .v-list {
     height: 100%;
+  }
+
+  .v-list-item--dense {
+    padding-left: 72px;
   }
 }
 </style>
