@@ -21,7 +21,8 @@ export default {
     <v-row no-gutters>
       <v-col
         class="podcast--home__sidebar"
-        cols="3"
+        md="4"
+        lg="3"
       >
         <v-list>
           <v-subheader>{{ podcasts.length }} podcasts</v-subheader>
@@ -55,7 +56,7 @@ export default {
               >
                 <v-list-item-title>Episodes</v-list-item-title>
                 <v-list-item-icon>
-                  <v-icon>$folder</v-icon>
+                  <v-icon>$media</v-icon>
                 </v-list-item-icon>
               </v-list-item>
               <v-list-item
@@ -78,7 +79,10 @@ export default {
           </template>
         </v-list>
       </v-col>
-      <v-col cols="9">
+      <v-col
+        md="8"
+        lg="9"
+      >
         <router-view />
       </v-col>
     </v-row>
@@ -95,7 +99,7 @@ export default {
   }
 
   .v-list-item--dense {
-    padding-left: 72px;
+    padding-left: 88px;
   }
 }
 </style>

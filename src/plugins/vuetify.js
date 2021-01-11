@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 
-import { mdiApps, mdiCog, mdiEye, mdiEyeOff, mdiFolder } from '@mdi/js'
+import { mdiApps, mdiCog, mdiEye, mdiEyeOff, mdiFolder, mdiPlayBoxMultiple } from '@mdi/js'
 import { makePalette } from 'material-color-tool'
 
 const brand = makePalette('#137490')
@@ -14,6 +14,7 @@ const vuetify = new Vuetify({
     values: {
       apps: mdiApps,
       folder: mdiFolder,
+      media: mdiPlayBoxMultiple,
       settings: mdiCog,
       show: mdiEye,
       hide: mdiEyeOff
