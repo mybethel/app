@@ -24,7 +24,7 @@ export default {
           class="ml-3 mr-1"
           size="32"
         >
-          <img :src="authData.user.avatar">
+          <img :src="authData.avatar(64)">
         </v-avatar>
         <v-icon small>
           $chevronDown

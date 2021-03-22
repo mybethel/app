@@ -29,4 +29,10 @@ describe('auth provider', () => {
     expect(await auth.init()).toBe(false)
     expect(auth.token).toBe('')
   })
+
+  it('allows for specifying a custom avatar size', async () => {
+    expect(authData.avatar).toBeDefined()
+    expect(authData.avatar(250)).toContain('&s=250')
+    expect(authData.avatar()).not.toContain('&s=')
+  })
 })

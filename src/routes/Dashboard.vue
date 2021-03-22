@@ -24,7 +24,7 @@ export default {
   <section>
     <div class="dashboard__welcome mt-8 mb-6">
       <v-avatar size="96">
-        <img :src="authData.user.avatar">
+        <img :src="authData.avatar(192)">
       </v-avatar>
       <span class="text-h5 font-weight-medium my-4">
         Good {{ greeting }}, {{ authData.user.name }}

@@ -20,6 +20,10 @@ export const authData = Vue.observable({
   },
   get ministries () {
     return this.user.ministries.edges?.map(({ node }) => node)
+  },
+
+  avatar (size) {
+    return this.user.avatar + (size ? '&s=' + size : '')
   }
 })
 

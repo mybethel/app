@@ -4,7 +4,8 @@ import Dashboard from './Dashboard'
 
 describe('Dashboard', () => {
   const mockAuthData = {
-    user: { name: 'Albert Martin' }
+    user: { name: 'Albert Martin' },
+    avatar: () => ''
   }
 
   let wrapper
