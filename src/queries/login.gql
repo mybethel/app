@@ -5,6 +5,14 @@ mutation Login($email: String, $password: String, $token: String) {
       id
       avatar
       name
+      ministries {
+        edges {
+          node {
+            id
+            name
+          }
+        }
+      }
     }
     ministry {
       id

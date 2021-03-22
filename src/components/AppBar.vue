@@ -1,11 +1,13 @@
 <script>
 import Logo from './Logo'
+import UserMenu from './UserMenu'
 
 export default {
   name: 'AppBar',
   inject: ['apiClient', 'authData', 'theme'],
   components: {
-    Logo
+    Logo,
+    UserMenu
   }
 }
 </script>
@@ -38,11 +40,7 @@ export default {
 
     <v-spacer />
 
-    <v-avatar size="32">
-      <img
-        :src="authData.user.avatar"
-      >
-    </v-avatar>
+    <user-menu />
   </v-app-bar>
 </template>
 
@@ -50,6 +48,8 @@ export default {
 header.v-app-bar.v-toolbar {
   a.v-toolbar__brand {
     line-height: 0;
+    left: calc(50% - 16px);
+    position: absolute;
   }
 
   &.theme--light {

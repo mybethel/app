@@ -17,6 +17,9 @@ export const authData = Vue.observable({
   },
   get isLoggedIn () {
     return !!this.user.id
+  },
+  get ministries () {
+    return this.user.ministries.edges?.map(({ node }) => node)
   }
 })
 
