@@ -25,5 +25,18 @@ new Vue({
   },
   vuetify,
   apolloProvider,
+  data: () => ({
+    mq: window.matchMedia('(prefers-color-scheme: dark)')
+  }),
+  created () {
+    this.onPrefersColorSchemeChanged(this.mq)
+    this.mq.onchange = this.onPrefersColorSchemeChanged
+  },
+  methods: {
+    onPrefersColorSchemeChanged ({ matches: preferDark }) {
+      vuetify.framework.theme.dark = preferDark
+      document.head.querySelector('link[rel="mask-icon"]').setAttribute('color', preferDark ? '#FFF' : '#137490')
+    }
+  },
   render: h => h(App)
 }).$mount('#app')
