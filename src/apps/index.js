@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 import router from '../routes'
 
+import Developer from './developer'
 import Podcast from './podcast'
 
 export const registry = Vue.observable({
@@ -18,11 +19,10 @@ export function install (plugin) {
     registry.plugins.push(plugin)
   }
 
-  if (plugin.routes) {
-    router.addRoutes(plugin.routes)
-  }
+  (plugin.routes || []).forEach(route => router.addRoute(route))
 }
 
 [
-  Podcast
+  Podcast,
+  Developer
 ].forEach(install)

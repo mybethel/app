@@ -1,5 +1,7 @@
 import { mdiPodcast as glyph } from '@mdi/js'
 
+import routes from './routes'
+
 export default {
   id: 'io.bethel.podcast',
   displayName: 'Podcasting',
@@ -7,23 +9,5 @@ export default {
     color: '#842AC0',
     glyph
   },
-  routes: [
-    {
-      component: () => import('./routes/Home'),
-      name: 'io.bethel.podcast',
-      path: '/podcast',
-      children: [
-        {
-          path: ':id',
-          name: 'io.bethel.podcast.detail',
-          component: () => import('./routes/Episodes')
-        },
-        {
-          path: 'settings',
-          name: 'io.bethel.podcast.settings',
-          component: () => import('./routes/Settings')
-        }
-      ]
-    }
-  ]
+  routes
 }

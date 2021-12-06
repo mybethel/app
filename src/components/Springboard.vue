@@ -9,14 +9,21 @@ export default {
     SpringboardIcon
   },
   mixins: [themeable],
-  inject: ['plugins']
+  inject: ['plugins'],
+  computed: {
+    springboard () {
+      return this.plugins.filter(plugin => {
+        return plugin.springboardVisible ?? true
+      })
+    }
+  }
 }
 </script>
 
 <template>
   <div id="springboard" :class="rootThemeClasses">
     <router-link
-      v-for="plugin in plugins"
+      v-for="plugin in springboard"
       :key="plugin.id"
       :to="{ name: plugin.id }"
     >
@@ -32,6 +39,7 @@ export default {
 #springboard {
   display: grid;
   grid-auto-rows: auto;
+  grid-gap: 2rem;
   margin: 0 20%;
   grid-template-columns: repeat(3, 1fr);
 
@@ -44,6 +52,10 @@ export default {
   }
 
   @include breakpoint('lg-and-up') {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include breakpoint('xl-only') {
     grid-template-columns: repeat(8, 1fr);
   }
 

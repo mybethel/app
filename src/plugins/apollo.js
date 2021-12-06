@@ -7,7 +7,7 @@ Vue.use(VueApollo)
 const AUTH_TOKEN = 'io.bethel.token'
 
 export const { apolloClient } = createApolloClient({
-  httpEndpoint: 'https://platform.bethel.vercel.app/graphql',
+  httpEndpoint: 'https://platform-bethel.vercel.app/graphql',
   tokenName: AUTH_TOKEN,
   persisting: false
 })
