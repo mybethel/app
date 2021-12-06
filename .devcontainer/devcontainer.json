@@ -1,0 +1,29 @@
+{
+  "name": "Node.js",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "14"
+    }
+  },
+  "extensions": [
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "octref.vetur"
+  ],
+  "forwardPorts": [
+    3000,
+    8080
+  ],
+  "postStartCommand": "nohup bash -c 'http-server ./coverage -p 3000 -s &' >/dev/null 2>&1",
+  "remoteUser": "node",
+  "portsAttributes": {
+    "3000": {
+      "label": "coverage"
+    },
+    "8080": {
+      "label": "app"
+    }
+  }
+}
